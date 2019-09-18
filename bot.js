@@ -40,6 +40,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 		*/
 	}else {
+		
 		var lastTimeStamp = lastMessageMap.get(userID);
 		var currentDate = Date.parse(timestamp);
 		var lastDate = Date.parse(lastTimeStamp);
@@ -50,6 +51,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				message: "A wild " + user + " appears.  You haven't been seen in over a week."
 			});
 		}
+		lastMessageMap.set(userID, timestamp);
 	}	
 	
 	if (message.toLowerCase().includes("i'm going")){
