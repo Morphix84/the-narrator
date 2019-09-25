@@ -64,6 +64,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			to: channelID,
 			message: 'And lo ' + user + ' put on his rules lawyer hat'
 		});
+	} else if (message.toLowerCase().includes("rolled:") && (
+				message.toLowerCase().includes("d20") && message.toLowerCase().includes("(20)"))){
+		var trolls = ["cheating", "rewriting " + user, "sacrificing to Tzeentch"];
+		bot.sendMessage({
+			to: channelID,
+			message: 'Nobody suspected ' + message.substring(0,message.indexOf(','))+ ' was ' + trolls[Math.floor((Math.random() * trolls.length))] + ', but he was. He truly was.'
+		});
 	} else if (message.toLowerCase().includes("results") && (
 				message.toLowerCase().includes(":failure:") || message.toLowerCase().includes(":despair:"))){
 		bot.sendMessage({
